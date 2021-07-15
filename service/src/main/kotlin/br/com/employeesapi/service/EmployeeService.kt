@@ -1,9 +1,9 @@
 package br.com.employeesapi.service
 
 import br.com.employeesapi.repository.EmployeeRepository
-import br.com.employeesapi.repository.domain.Employee
-import br.com.employeesapi.service.request.EmployeeRequestBody
-import br.com.employeesapi.service.response.EmployeeResponse
+import br.com.employeesapi.service.dto.EmployeeDto
+import br.com.employeesapi.service.dto.toEmployee
+import br.com.employeesapi.service.dto.toEmployeeDto
 import org.springframework.stereotype.Service
 
 @Service
@@ -11,18 +11,13 @@ class EmployeeService(
     private val employeeRepository: EmployeeRepository,
 ) {
 
-    fun get(): MutableList<EmployeeResponse> {
+    fun get(): MutableList<EmployeeDto> {
         val employeeList = employeeRepository.findAll()
-        var employeeResponseList = mutableListOf<EmployeeResponse>()
+        val employeeResponseList = mutableListOf<EmployeeDto>()
 
         for (employee in employeeList) {
             employeeResponseList.add(
-                EmployeeResponse(
-                    id = employee.id,
-                    name = employee.name,
-                    age = employee.age,
-                    level = employee.level
-                )
+                employee.toEmployeeDto()
             )
         }
 
@@ -30,21 +25,12 @@ class EmployeeService(
     }
 
 
-    fun save(employeeRequest: EmployeeRequestBody): EmployeeResponse {
+    fun save(employeeDto: EmployeeDto): EmployeeDto {
 
         val employee = employeeRepository.save(
-            Employee(
-                name = employeeRequest.name,
-                age = employeeRequest.age,
-                level = employeeRequest.level
-            )
+            employeeDto.toEmployee()
         )
 
-        return EmployeeResponse(
-            id = employee.id,
-            name = employee.name,
-            age = employee.age,
-            level = employee.level
-        )
+        return employee.toEmployeeDto()
     }
 }
