@@ -1,6 +1,6 @@
-CREATE TABLE billionaires (
+CREATE TABLE employees (
   id INT AUTO_INCREMENT  PRIMARY KEY,
   name VARCHAR(250) NOT NULL,
-  idade INT NOT NULL,
-  nivelDeEngajamento VARCHAR(250) NOT NULL
+  age INT NOT NULL,
+  level_employee VARCHAR(250) NOT NULL
 );
