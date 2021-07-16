@@ -12,6 +12,6 @@
 
 - `entities` has the business objects of the application and cannot access any other module;
 - `repository` has access to entities e defines the DAO and the database;
-- `service` contains the business rules and can see entities and repository;
+- `service` contains the business rules and can see repository layer;
 - `web` contains the endpoints;
 - `aplication` has access to all modules and runs the application
