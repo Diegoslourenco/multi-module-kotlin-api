@@ -17,7 +17,6 @@ class EmployeeController(
 
     @GetMapping
     @ApiOperation(value="Return a list of employees")
-    @ApiOperation
     fun get(): ResponseEntity<MutableList<EmployeeDto>> {
         return ResponseEntity<MutableList<EmployeeDto>>(employeeService.get(), HttpStatus.OK)
     }
