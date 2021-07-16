@@ -3,8 +3,6 @@ package br.com.employeesapi.web.controller
 import br.com.employeesapi.service.dto.EmployeeDto
 import br.com.employeesapi.service.EmployeeService
 import io.swagger.annotations.Api
-import io.swagger.annotations.ApiImplicitParam
-import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiOperation
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
